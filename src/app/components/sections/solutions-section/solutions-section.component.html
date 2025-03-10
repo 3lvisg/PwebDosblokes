@@ -1,0 +1,15 @@
+<section class="solutions">
+    <div class="container">
+      <h2 class="solutions__title">{{ content.title }}</h2>
+      <div class="solutions__grid">
+        <app-card
+          *ngFor="let solution of content.items"
+          [image]="solution.image"
+          [title]="solution.title"
+          [description]="solution.description"
+          [link]="solution.link"
+          class="solutions__card">
+        </app-card>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,23 @@
+<article
+  class="product-card"
+  appAnimate="zoom-in"
+  [delay]="delay"
+  [style.backgroundImage]="'url(' + product.image + ')'"
+>
+  <div class="product-card__overlay">
+    <h3 class="product-card__title" appAnimate="fade-up" [delay]="delay + 200">
+      {{ product.title }}
+    </h3>
+
+    <button
+      mat-button
+      class="product-card__button"
+      (click)="onDetails()"
+      appAnimate="flip"
+      [delay]="delay + 400"
+    >
+      detalles
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</article>

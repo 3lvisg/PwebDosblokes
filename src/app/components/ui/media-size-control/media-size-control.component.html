@@ -1,0 +1,120 @@
+<div class="media-size-control">
+  <h3>Ajustar tamaño de medios: {{ typeLabel }}</h3>
+
+  <mat-tab-group>
+    <mat-tab label="Imágenes" *ngIf="showImageControls">
+      <div class="media-size-control__sliders">
+        <div class="media-size-control__slider">
+          <label for="imageWidth">Ancho (px)</label>
+          <mat-slider
+            min="0"
+            max="1200"
+            step="10"
+            discrete
+            [displayWith]="formatWidthLabel"
+          >
+            <input
+              matSliderThumb
+              id="imageWidth"
+              [(ngModel)]="imageWidth"
+              (ngModelChange)="updateImageWidth()"
+            />
+          </mat-slider>
+          <span>{{
+            imageWidth === 0 ? "Auto (100%)" : imageWidth + "px"
+          }}</span>
+        </div>
+
+        <div class="media-size-control__slider">
+          <label for="imageHeight">Altura (px)</label>
+          <mat-slider
+            min="100"
+            max="800"
+            step="10"
+            discrete
+            [displayWith]="formatLabel"
+          >
+            <input
+              matSliderThumb
+              id="imageHeight"
+              [(ngModel)]="imageHeight"
+              (ngModelChange)="updateImageHeight()"
+            />
+          </mat-slider>
+          <span>{{ imageHeight }}px</span>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Videos" *ngIf="showVideoControls">
+      <div class="media-size-control__sliders">
+        <div class="media-size-control__slider">
+          <label for="videoWidth">Ancho (px)</label>
+          <mat-slider
+            min="0"
+            max="1200"
+            step="10"
+            discrete
+            [displayWith]="formatWidthLabel"
+          >
+            <input
+              matSliderThumb
+              id="videoWidth"
+              [(ngModel)]="videoWidth"
+              (ngModelChange)="updateVideoWidth()"
+            />
+          </mat-slider>
+          <span>{{
+            videoWidth === 0 ? "Auto (100%)" : videoWidth + "px"
+          }}</span>
+        </div>
+
+        <div class="media-size-control__slider">
+          <label for="videoHeight">{{
+            type === "hero" ? "Altura (vh)" : "Altura (px)"
+          }}</label>
+          <mat-slider
+            id="videoHeight"
+            [min]="type === 'hero' ? 30 : 100"
+            [max]="type === 'hero' ? 100 : 800"
+            step="5"
+            discrete
+            [displayWith]="formatHeightLabel"
+          >
+            <input
+              matSliderThumb
+              [(ngModel)]="videoHeight"
+              (ngModelChange)="updateVideoHeight()"
+            />
+          </mat-slider>
+          <span>{{ videoHeight }}{{ type === "hero" ? "vh" : "px" }}</span>
+        </div>
+
+        <div class="media-size-control__slider" *ngIf="type === 'hero'">
+          <label for="videoMinHeight">Altura mínima (px)</label>
+          <mat-slider
+            min="300"
+            max="800"
+            step="10"
+            discrete
+            [displayWith]="formatLabel"
+          >
+            <input
+              matSliderThumb
+              [(ngModel)]="videoMinHeight"
+              (ngModelChange)="updateVideoMinHeight()"
+            />
+          </mat-slider>
+          <span>{{ videoMinHeight }}px</span>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <div class="media-size-control__actions">
+    <button mat-button color="warn" (click)="reset()">
+      <mat-icon>refresh</mat-icon>
+      Restablecer
+    </button>
+  </div>
+</div>

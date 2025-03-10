@@ -1,0 +1,189 @@
+<main class="home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div
+      class="video-container"
+      appAnimate="scale-parallax"
+      [duration]="3000"
+      [once]="false"
+    >
+      <video
+        #heroVideo
+        class="hero__video"
+        [class.hero__video--mobile]="isMobile"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-describedby="videoDescription"
+      >
+        <track
+          kind="subtitles"
+          src="assets/videos/presentacion.vtt"
+          srclang="es"
+          label="Español"
+        />
+        <source [src]="currentVideoSrc" type="video/mp4" />
+      </video>
+      <button class="video-control" (click)="toggleVideo()">
+        <mat-icon>{{ isVideoPlaying ? "pause" : "play_arrow" }}</mat-icon>
+      </button>
+      <div class="hero__content">
+        <h1 class="hero__title" appAnimate="fade-up" [delay]="300">
+          Diseño que inspira
+        </h1>
+        <p class="hero__subtitle" appAnimate="fade-up" [delay]="500">
+          Descubre la nueva generación de tecnología
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section class="solutions">
+    <div class="container">
+      <h2
+        class="solutions__title"
+        appAnimate="fade-up"
+        [duration]="2000"
+        [delay]="300"
+        [once]="true"
+      >
+        DESCUBRE NUESTRAS SOLUCIONES
+      </h2>
+      <div class="solutions__carousel">
+        <div
+          class="solutions__track"
+          [style.transform]="'translateX(' + translateX + 'px)'"
+        >
+          <div
+            *ngFor="let solution of solutions; let i = index"
+            class="solutions__card"
+            appAnimate="zoom-in"
+            [delay]="i * 300"
+            [duration]="2000"
+            [once]="false"
+          >
+            <div class="solutions__card-overlay"></div>
+            <span class="solutions__card-category">{{
+              solution.category
+            }}</span>
+            <app-image-container
+              [src]="solution.image"
+              [alt]="solution.title"
+              type="solution"
+              objectFit="cover"
+              class="solutions__card-bg"
+              [rounded]="false"
+              appAnimate="rotate-in"
+              [delay]="i * 300 + 300"
+              [once]="false"
+            ></app-image-container>
+            <button
+              mat-icon-button
+              class="solutions__card-icon"
+              (click)="openSolutionModal(solution)"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <button
+          mat-icon-button
+          class="solutions__nav solutions__nav--prev"
+          (click)="navigate('prev')"
+          appAnimate="fade-right"
+          [once]="false"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="solutions__nav solutions__nav--next"
+          (click)="navigate('next')"
+          appAnimate="fade-left"
+          [once]="false"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Section -->
+  <section class="family">
+    <div class="container">
+      <h2
+        class="family__title"
+        appAnimate="fade-up"
+        [duration]="1500"
+        [delay]="300"
+        [once]="false"
+      >
+        CONOCE LA FAMILIA
+      </h2>
+      <div class="family__carousel">
+        <div
+          class="family__track"
+          [style.transform]="'translateX(' + familyTranslateX + 'px)'"
+          [style.width]="
+            products.length * (isMobile ? window.innerWidth - 80 : 280) + 'px'
+          "
+        >
+          <a
+            *ngFor="let product of products; let i = index"
+            [routerLink]="'/productos'"
+            class="family__card"
+            appAnimate="zoom-in"
+            [delay]="i * 300"
+            [duration]="2000"
+            [once]="false"
+          >
+            <div class="family__card-tag" *ngIf="product.category">
+              {{ product.category }}
+            </div>
+            <app-image-container
+              [src]="product.image"
+              [alt]="product.title"
+              type="family"
+              appAnimate="rotate-in"
+              [delay]="i * 300 + 300"
+              [once]="false"
+            ></app-image-container>
+            <div class="family__card-content">
+              <h3 class="family__card-title">{{ product.title }}</h3>
+              <p class="family__card-subtitle">{{ product.subtitle }}</p>
+            </div>
+          </a>
+        </div>
+
+        <button
+          mat-icon-button
+          class="family__nav family__nav--prev"
+          (click)="navigateFamily('prev')"
+          aria-label="Anterior"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="family__nav family__nav--next"
+          (click)="navigateFamily('next')"
+          aria-label="Siguiente"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-solution-modal
+  [isOpen]="isModalOpen"
+  [solution]="selectedSolution"
+  (closeModal)="closeModal()"
+>
+</app-solution-modal>

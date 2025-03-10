@@ -1,0 +1,43 @@
+.solutions-page {
+  padding: var(--spacing-xl) 0;
+  background: var(--surface);
+}
+
+.solutions-page__header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.solutions-page__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.solutions-page__description {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.solutions-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.solutions-page__card {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .solutions-page__title {
+    font-size: 2rem;
+  }
+
+  .solutions-page__description {
+    font-size: 1rem;
+  }
+}

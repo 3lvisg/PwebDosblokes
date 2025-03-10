@@ -1,0 +1,62 @@
+<div
+  class="video-container"
+  [class.video-container--rounded]="rounded"
+  [class.video-container--playing]="isPlaying"
+  [style.width]="width ? width + 'px' : 'var(--' + type + '-video-width)'"
+  [style.height]="height ? height + 'px' : 'var(--' + type + '-video-height)'"
+  [style.min-height]="minHeight ? minHeight + 'px' : 'auto'"
+  [style.aspect-ratio]="aspectRatio"
+>
+  <video
+    #videoElement
+    class="video-container__video"
+    [src]="src"
+    [poster]="poster"
+    [muted]="muted"
+    [loop]="loop"
+    [autoplay]="autoplay"
+    [attr.playsinline]="true"
+    (click)="togglePlay()"
+    (timeupdate)="onTimeUpdate()"
+    (loadedmetadata)="onLoadedMetadata()"
+  ></video>
+
+  <div class="video-container__overlay" *ngIf="showOverlay">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="video-container__controls" *ngIf="showControls">
+    <button
+      mat-icon-button
+      class="video-container__play-button"
+      (click)="togglePlay()"
+      [attr.aria-label]="isPlaying ? 'Pausar' : 'Reproducir'"
+    >
+      <mat-icon>{{ isPlaying ? "pause" : "play_arrow" }}</mat-icon>
+    </button>
+
+    <div class="video-container__progress" (click)="seekVideo($event)">
+      <div
+        class="video-container__progress-bar"
+        [style.width.%]="progress"
+        role="progressbar"
+        [attr.aria-valuenow]="progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+
+    <div class="video-container__time">
+      {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
+    </div>
+
+    <button
+      mat-icon-button
+      class="video-container__mute-button"
+      (click)="toggleMute()"
+      [attr.aria-label]="isMuted ? 'Activar sonido' : 'Silenciar'"
+    >
+      <mat-icon>{{ isMuted ? "volume_off" : "volume_up" }}</mat-icon>
+    </button>
+  </div>
+</div>

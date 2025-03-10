@@ -1,0 +1,50 @@
+<div class="image-size-control">
+  <h3>Ajustar tamaño de imágenes: {{ typeLabel }}</h3>
+
+  <div class="image-size-control__sliders">
+    <div class="image-size-control__slider">
+      <label for="height-slider">Altura (px)</label>
+      <mat-slider
+        id="height-slider"
+        min="100"
+        max="600"
+        step="10"
+        discrete
+        [displayWith]="formatLabel"
+      >
+        <input
+          matSliderThumb
+          [(ngModel)]="height"
+          (ngModelChange)="updateHeight()"
+        />
+      </mat-slider>
+      <span>{{ height }}px</span>
+    </div>
+
+    <div class="image-size-control__slider" *ngIf="showWidthControl">
+      <label for="width-slider">Ancho (px)</label>
+      <mat-slider
+        id="width-slider"
+        min="100"
+        max="600"
+        step="10"
+        discrete
+        [displayWith]="formatLabel"
+      >
+        <input
+          matSliderThumb
+          [(ngModel)]="width"
+          (ngModelChange)="updateWidth()"
+        />
+      </mat-slider>
+      <span>{{ width }}px</span>
+    </div>
+  </div>
+
+  <div class="image-size-control__actions">
+    <button mat-button color="warn" (click)="reset()">
+      <mat-icon>refresh</mat-icon>
+      Restablecer
+    </button>
+  </div>
+</div>

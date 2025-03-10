@@ -1,0 +1,112 @@
+/* Improved Warranty Component Styles */
+.warranty {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--surface);
+}
+
+.warranty__title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xl);
+  color: var(--primary-dark);
+  text-align: center;
+}
+
+.warranty__content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.warranty__section {
+  margin-bottom: var(--spacing-xl);
+  background-color: var(--segundario);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.warranty__section:nth-child(even) {
+  background-color: var(--segundario);
+}
+
+.warranty__section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  color: var(text-primary);
+  border-bottom: 2px solid var(--primary-light);
+  padding-bottom: var(--spacing-sm);
+}
+
+.warranty__section-number {
+  display: inline-block;
+  margin-right: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.warranty__text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  text-align: justify;
+  color: var(--text-primary);
+}
+
+.warranty__list {
+  list-style-type: none;
+  margin-bottom: var(--spacing-md);
+}
+
+.warranty__list-item {
+  position: relative;
+  padding-left: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.warranty__list-item::before {
+  content: "•";
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.warranty__contact {
+  background-color: var(--surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.warranty__contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  color: var(text-primary);
+  font-size: 1.1rem;
+}
+
+.warranty__contact-item i {
+  margin-right: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .warranty__title {
+    font-size: 1.75rem;
+  }
+
+  .warranty__section-title {
+    font-size: 1.25rem;
+  }
+
+  .warranty__text,
+  .warranty__list-item {
+    font-size: 1rem;
+  }
+}

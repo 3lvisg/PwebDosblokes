@@ -1,0 +1,140 @@
+<article class="solution">
+  <!-- Hero Video Section -->
+  <section class="solution__hero">
+    <div
+      class="video-container"
+      appAnimate="scale-parallax"
+      [duration]="3000"
+      [once]="false"
+    >
+      <video
+        #heroVideo
+        class="solution__video"
+        [class.solution__video--mobile]="isMobile"
+        muted
+        loop
+        playsinline
+        aria-describedby="videoDescription"
+      >
+        <track
+          kind="subtitles"
+          src="assets/videos/presentacion.vtt"
+          srclang="es"
+          label="Español"
+        />
+        <source [src]="currentVideoSrc" type="video/mp4" />
+      </video>
+      <button class="video-control" (click)="toggleVideo(heroVideo)">
+        <mat-icon>{{ isVideoPlaying ? "pause" : "play_arrow" }}</mat-icon>
+      </button>
+    </div>
+  </section>
+
+  <!-- Description Section with Video -->
+  <section
+    class="container section-spacing"
+    appAnimate="fade-left"
+    [duration]="2000"
+    [once]="false"
+  >
+    <div class="row">
+      <div class="col-md-6">
+        <div class="solution__description">
+          <h2 appAnimate="fade-up" [duration]="2000" [once]="false">
+            {{ content.subtitle }}
+          </h2>
+          <p
+            appAnimate="fade-up"
+            [delay]="300"
+            [duration]="2000"
+            [once]="false"
+          >
+            {{ content.description }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="col-md-6"
+        appAnimate="zoom-in"
+        [duration]="2000"
+        [once]="false"
+      >
+        <div class="solution__video-item" #videoContainer>
+          <div class="solution__video-thumbnail-wrapper">
+            <video #videoPlayer class="solution__video" muted loop playsinline>
+              <source [src]="content.videos[0].url" type="video/mp4" />
+            </video>
+            <button
+              mat-icon-button
+              class="solution__play-button"
+              (click)="toggleVideo(videoPlayer, 0)"
+              appAnimate="fade-up"
+              [delay]="300"
+              [once]="false"
+            >
+              <mat-icon>{{
+                isVideoPlayingArray[0] ? "pause" : "play_circle"
+              }}</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Info Section with Video -->
+  <section
+    *ngIf="content.videos?.[1] && content.subtitle2 && content.description2"
+    class="container section-spacing"
+    appAnimate="fade-left"
+    [duration]="2000"
+    [once]="false"
+  >
+    <div class="row reverse-row">
+      <div
+        class="col-md-6"
+        appAnimate="zoom-out"
+        [duration]="2000"
+        [once]="false"
+      >
+        <div class="solution__video-item" #videoContainer>
+          <div class="solution__video-thumbnail-wrapper">
+            <video #videoPlayer class="solution__video" muted loop playsinline>
+              <source [src]="content.videos[1].url" type="video/mp4" />
+            </video>
+            <button
+              mat-icon-button
+              class="solution__play-button"
+              (click)="toggleVideo(videoPlayer, 1)"
+              appAnimate="fade-up"
+              [delay]="300"
+              [once]="false"
+            >
+              <mat-icon>{{
+                isVideoPlayingArray[1] ? "pause" : "play_circle"
+              }}</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div
+          class="solution__support-info"
+          appAnimate="fade-up"
+          [duration]="2000"
+          [once]="false"
+        >
+          <h3>{{ content.subtitle2 }}</h3>
+          <p
+            appAnimate="fade-up"
+            [delay]="300"
+            [duration]="2000"
+            [once]="false"
+          >
+            {{ content.description2 }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

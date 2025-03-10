@@ -1,0 +1,46 @@
+<div class="video-player" [class.video-player--playing]="isPlaying">
+  <video
+    #videoElement
+    class="video-player__video"
+    [src]="src"
+    [poster]="poster"
+    (click)="togglePlay()"
+    (timeupdate)="onTimeUpdate()"
+    (loadedmetadata)="onLoadedMetadata()"
+  ></video>
+
+  <div class="video-player__controls">
+    <button
+      mat-icon-button
+      class="video-player__play-button"
+      (click)="togglePlay()"
+      [attr.aria-label]="isPlaying ? 'Pausar' : 'Reproducir'"
+    >
+      <mat-icon>{{ isPlaying ? "pause" : "play_arrow" }}</mat-icon>
+    </button>
+
+    <div class="video-player__progress">
+      <div
+        class="video-player__progress-bar"
+        [style.width.%]="progress"
+        role="progressbar"
+        [attr.aria-valuenow]="progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+
+    <div class="video-player__time">
+      {{ currentTime | number : "1.0-0" }}:{{ duration | number : "1.0-0" }}
+    </div>
+
+    <button
+      mat-icon-button
+      class="video-player__mute-button"
+      (click)="toggleMute()"
+      [attr.aria-label]="isMuted ? 'Activar sonido' : 'Silenciar'"
+    >
+      <mat-icon>{{ isMuted ? "volume_off" : "volume_up" }}</mat-icon>
+    </button>
+  </div>
+</div>

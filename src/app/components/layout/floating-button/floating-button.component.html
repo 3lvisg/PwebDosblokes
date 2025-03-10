@@ -1,0 +1,35 @@
+<div class="floating-button" [class.floating-button--open]="isOpen">
+  <button
+    mat-fab
+    class="floating-button__trigger"
+    (click)="toggle()"
+    [attr.aria-expanded]="isOpen"
+    aria-label="Menú de soporte"
+  >
+    <mat-icon class="fab fa-whatsapp icon-large" *ngIf="!isOpen"></mat-icon>
+    <mat-icon *ngIf="isOpen">close</mat-icon>
+  </button>
+
+  <div class="floating-button__menu" role="menu">
+    <a
+      href="https://wa.me/1234567890"
+      mat-mini-fab
+      class="floating-button__item"
+      aria-label="WhatsApp"
+    >
+      <mat-icon class="fas fa-headset"></mat-icon>
+      <span *ngIf="isOpen" class="floating-button__text">Soporte</span>
+    </a>
+    <a
+      href="https://wa.me/1234567890"
+      target="_blank"
+      rel="noopener noreferrer"
+      mat-mini-fab
+      class="floating-button__item"
+      aria-label="WhatsApp"
+    >
+      <mat-icon class="fab fa-whatsapp"></mat-icon>
+      <span *ngIf="isOpen" class="floating-button__text">Asesora</span>
+    </a>
+  </div>
+</div>

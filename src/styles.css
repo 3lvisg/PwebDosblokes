@@ -1,0 +1,290 @@
+:root {
+  /* Colors */
+  --primary: #ee8032;
+  --primary-light: #ff8533;
+  --primary-dark: #f5751a;
+  --surface: #ffffff;
+  --surface-hover: rgba(58, 55, 55, 0.616);
+  --surface-active: rgba(255, 107, 0, 0.1);
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-on-primary: #ffffff;
+
+  /* Animations */
+  --animation-duration: 1200ms;
+  --animation-delay: 0ms;
+  --animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Borders */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Layout */
+  --max-width: 1400px;
+  --nav-height: 4rem;
+
+  /* Dimensiones de imágenes */
+  --solution-card-aspect: 2 / 3;
+  --solution-image-height: 450px;
+  --solution-image-width: 100%;
+  --solution-modal-image-height: 500px;
+  --solution-modal-image-width: 100%;
+  --product-card-image-height: 280px;
+  --product-card-image-width: 100%;
+  --product-modal-image-height: 400px;
+  --product-modal-image-width: 100%;
+  --family-card-image-height: 300px;
+  --family-card-image-width: 100%;
+
+  /* Dimensiones de videos */
+  --hero-video-height: 70vh;
+  --hero-video-width: 100%;
+  --hero-video-min-height: 500px;
+  --solution-video-height: 400px;
+  --solution-video-width: 100%;
+  --product-video-height: 300px;
+  --product-video-width: 100%;
+
+  /* Aspect ratios */
+  --aspect-ratio-16-9: 56.25%; /* 9/16 * 100% */
+  --aspect-ratio-4-3: 75%; /* 3/4 * 100% */
+  --aspect-ratio-1-1: 100%; /* 1/1 * 100% */
+
+  /* Dimensiones de cards */
+  --solution-card-width: calc(
+    25% - 12px
+  ); /* Ancho de las tarjetas de soluciones */
+  --solution-card-height: 450px; /* Altura de las tarjetas de soluciones */
+  --product-card-width: 260px; /* Ancho de las tarjetas de productos */
+  --product-card-height: 320px; /* Altura de las tarjetas de productos */
+  --family-card-width: 260px; /* Ancho de las tarjetas de familia */
+  --family-card-height: 300px; /* Altura de las tarjetas de familia */
+  --card-gap-mobile: 16px; /* Espacio entre tarjetas en móvil */
+}
+
+/* Reset y estilos base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegurar que el menú de navegación permanezca fijo */
+.nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+html {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Material Design Overrides */
+.mat-mdc-button {
+  border-radius: var(--radius-sm) !important;
+}
+
+.mat-mdc-raised-button {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.mat-mdc-menu-panel {
+  border-radius: var(--radius-md) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* Dialog Styles */
+.custom-dialog .mat-mdc-dialog-container {
+  padding: 0;
+  border-radius: var(--radius-lg);
+}
+
+.custom-dialog .mat-mdc-dialog-surface {
+  border-radius: var(--radius-lg) !important;
+}
+
+/* Animaciones suaves */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Transiciones globales */
+* {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ajustes para performance */
+.gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Animaciones para modales */
+.modal-overlay {
+  opacity: 0;
+  backdrop-filter: blur(0);
+  transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.modal-overlay.visible {
+  background: #000000; /* Fondo negro sólido */
+  opacity: 1; /* Totalmente visible */
+  backdrop-filter: none; /* Sin desenfoque */
+}
+
+.modal-content {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-content.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Animaciones para imágenes */
+.image-reveal {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-reveal.visible {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 1200px) {
+  :root {
+    --solution-image-height: 350px;
+    --product-modal-image-height: 350px;
+    --hero-video-height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --solution-image-height: 400px;
+    --solution-card-height: 400px;
+    --solution-modal-image-height: 300px;
+    --product-card-image-height: 180px; /* Reducido de 200px */
+    --product-card-height: 260px;
+    --product-modal-image-height: 250px;
+    --family-card-image-height: 340px; /* Reducido de 160px */
+    --family-card-height: 340px;
+    --hero-video-height: 40vh;
+    --solution-video-height: 250px;
+    --product-video-height: 200px;
+
+    /* Dimensiones de videos */
+    --hero-video-height: 70vh;
+    --hero-video-width: 100%;
+    --hero-video-min-height: 500px;
+    --solution-video-height: 400px;
+    --solution-video-width: 100%;
+    --product-video-height: 300px;
+    --product-video-width: 100%;
+
+    /* Reducir aún más el ancho de las cards para móviles pequeños */
+    --card-gap-mobile: 10px;
+    --card-gap-mobile2: 20px;
+    --card-gap-mobile3: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --solution-image-height: 400px;
+    --solution-card-height: 400px;
+    --solution-modal-image-height: 300px;
+    --product-card-image-height: 180px; /* Reducido de 200px */
+    --product-card-height: 260px;
+    --product-modal-image-height: 250px;
+    --family-card-image-height: 340px; /* Reducido de 160px */
+    --family-card-height: 340px;
+    --hero-video-height: 40vh;
+    --solution-video-height: 250px;
+    --product-video-height: 200px;
+
+    /* Dimensiones de videos */
+    --hero-video-height: 70vh;
+    --hero-video-width: 100%;
+    --hero-video-min-height: 500px;
+    --solution-video-height: 250px;
+    --solution-video-width: 100%;
+    --product-video-height: 300px;
+    --product-video-width: 100%;
+
+    /* Reducir aún más el ancho de las cards para móviles pequeños */
+    --card-gap-mobile: 10px;
+    --card-gap-mobile2: 20px;
+    --card-gap-mobile3: 40px;
+  }
+}

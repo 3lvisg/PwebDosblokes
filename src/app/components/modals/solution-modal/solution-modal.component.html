@@ -1,0 +1,92 @@
+<div class="modal" [class.modal--open]="isOpen">
+  <button
+    class="modal-overlay"
+    [class.visible]="isOpen"
+    (click)="close()"
+    (keydown.escape)="close()"
+    aria-label="Cerrar modal"
+  ></button>
+
+  <div class="modal-content" [class.visible]="isOpen">
+    <button
+      mat-icon-button
+      class="modal__close"
+      (click)="close()"
+      aria-label="Cerrar"
+      appAnimate="fade-down"
+      [duration]="800"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="modal__content">
+      <h2 class="modal__title" appAnimate="fade-up" [duration]="1200">
+        {{ solution?.title }}
+      </h2>
+
+      <!-- Primera sección -->
+      <div class="modal__section" appAnimate="fade-up" [duration]="1200">
+        <div class="modal__image-container">
+          <!-- Reemplazar las etiquetas img con el nuevo componente -->
+          <app-image-container
+            [src]="solution?.image || ''"
+            [alt]="solution?.title || ''"
+            type="solution"
+            objectFit="cover"
+            appAnimate="reveal"
+            [delay]="200"
+          ></app-image-container>
+        </div>
+
+        <div class="modal__info">
+          <div class="modal__description">
+            <h3>DESCRIPCIÓN</h3>
+            <p>{{ solution?.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda sección -->
+      <div
+        class="modal__section modal__section--reverse"
+        *ngIf="solution?.description2"
+        appAnimate="fade-up"
+        [duration]="1200"
+        [delay]="300"
+      >
+        <div class="modal__info">
+          <div class="modal__description">
+            <h3>DESCRIPCIÓN</h3>
+            <p>{{ solution?.description2 }}</p>
+          </div>
+        </div>
+
+        <div class="modal__image-container">
+          <!-- Y también para la segunda imagen si existe -->
+          <app-image-container
+            [src]="solution?.image2 || ''"
+            [alt]="solution?.title || ''"
+            type="solution"
+            objectFit="cover"
+            appAnimate="reveal"
+            [delay]="500"
+          ></app-image-container>
+        </div>
+      </div>
+      <!-- Botón de más información -->
+      <div class="modal__actions">
+        <a
+          mat-raised-button
+          color="primary"
+          [routerLink]="getSolutionLink()"
+          (click)="close()"
+          appAnimate="fade-up"
+          [duration]="1200"
+          [delay]="600"
+        >
+          MÁS INFORMACIÓN
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

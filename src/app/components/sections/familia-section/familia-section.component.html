@@ -1,0 +1,13 @@
+<section class="familia">
+    <div class="container">
+      <h2 class="familia__title">{{ content.title }}</h2>
+      <div class="familia__badges">
+        <div 
+          *ngFor="let badge of content.badges"
+          class="familia__badge"
+          [style.background-color]="badge.color">
+          {{ badge.text }}
+        </div>
+      </div>
+    </div>
+  </section>

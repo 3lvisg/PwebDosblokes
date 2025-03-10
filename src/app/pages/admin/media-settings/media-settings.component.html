@@ -1,0 +1,61 @@
+<section class="media-settings">
+  <div class="container">
+    <h1 class="media-settings__title">Configuración de Medios</h1>
+
+    <div class="media-settings__controls">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Tamaños de Medios</mat-card-title>
+          <mat-card-subtitle
+            >Ajusta el tamaño de imágenes y videos por
+            categoría</mat-card-subtitle
+          >
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-tab-group>
+            <mat-tab label="Imágenes">
+              <div class="media-settings__tab-content">
+                <app-media-size-control
+                  type="product"
+                  [showVideoControls]="false"
+                ></app-media-size-control>
+                <app-media-size-control
+                  type="solution"
+                  [showVideoControls]="false"
+                ></app-media-size-control>
+                <app-media-size-control
+                  type="family"
+                  [showVideoControls]="false"
+                ></app-media-size-control>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Videos">
+              <div class="media-settings__tab-content">
+                <app-media-size-control
+                  type="hero"
+                  [showImageControls]="false"
+                ></app-media-size-control>
+                <app-media-size-control
+                  type="solution"
+                  [showImageControls]="false"
+                ></app-media-size-control>
+                <app-media-size-control
+                  type="product"
+                  [showImageControls]="false"
+                ></app-media-size-control>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button mat-button color="warn" (click)="resetAllSizes()">
+            Restablecer Todo
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</section>

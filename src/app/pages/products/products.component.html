@@ -1,0 +1,32 @@
+<section class="products">
+  <div class="container">
+    <h1
+      class="products__title"
+      appAnimate="fade-up"
+      [duration]="2000"
+      [once]="false"
+    >
+      Nuestros Productos
+    </h1>
+
+    <div class="products__grid">
+      <app-product-card
+        *ngFor="let product of filteredProducts; let i = index"
+        [product]="product"
+        appAnimate="zoom-in"
+        [delay]="i * 300"
+        [duration]="1500"
+        [once]="false"
+        (viewDetails)="openProductModal($event)"
+      >
+      </app-product-card>
+    </div>
+  </div>
+</section>
+
+<app-product-modal
+  [isOpen]="isModalOpen"
+  [product]="selectedProduct"
+  (closeModal)="closeModal()"
+>
+</app-product-modal>

@@ -1,0 +1,14 @@
+<section class="hero">
+    <app-video-player
+      [src]="content.videoUrl"
+      class="hero__video">
+    </app-video-player>
+    
+    <div class="hero__content">
+      <h1 class="hero__title">{{ content.title }}</h1>
+      <p class="hero__subtitle">{{ content.subtitle }}</p>
+      <button mat-raised-button color="primary" class="hero__cta">
+        {{ content.cta }}
+      </button>
+    </div>
+  </section>

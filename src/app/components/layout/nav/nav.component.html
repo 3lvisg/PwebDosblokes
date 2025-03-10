@@ -1,0 +1,103 @@
+<mat-toolbar class="nav">
+  <div class="container">
+    <div class="nav__content">
+      <a routerLink="/" class="nav__logo-container" (click)="closeMenu()">
+        <img
+          src="assets/images/logo.png"
+          alt="Logo"
+          height="55"
+          class="nav__logo-img"
+        />
+        <span class="nav__company-name"
+          >DOSBLOKES EXHIBICIONES Y DISEÑOS SAS</span
+        >
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="nav__desktop-menu">
+        <!-- Iterar sobre los elementos del menú cargados desde content.json -->
+        <ng-container *ngFor="let item of menuItems">
+          <!-- Elemento de menú simple (sin submenú) -->
+          <button mat-button [routerLink]="item.path" *ngIf="!item.submenu">
+            {{ item.title }}
+          </button>
+
+          <!-- Elemento de menú con submenú -->
+          <ng-container *ngIf="item.submenu">
+            <button mat-button [matMenuTriggerFor]="dynamicMenu">
+              {{ item.title }}
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #dynamicMenu="matMenu">
+              <a
+                mat-menu-item
+                [routerLink]="subitem.path"
+                *ngFor="let subitem of item.submenu"
+              >
+                {{ subitem.title }}
+              </a>
+            </mat-menu>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        mat-icon-button
+        class="nav__mobile-toggle"
+        (click)="toggleMenu()"
+        [class.nav__mobile-toggle--open]="isMenuOpen"
+      >
+        <mat-icon>{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<!-- Mobile Menu -->
+<div class="nav__mobile-menu" [class.nav__mobile-menu--open]="isMenuOpen">
+  <div class="container">
+    <div class="nav__mobile-content">
+      <!-- Iterar sobre los elementos del menú cargados desde content.json -->
+      <ng-container *ngFor="let item of menuItems">
+        <!-- Elemento de menú simple (sin submenú) -->
+        <button
+          mat-button
+          [routerLink]="item.path"
+          (click)="closeMenu()"
+          *ngIf="!item.submenu"
+        >
+          {{ item.title }}
+        </button>
+
+        <!-- Elemento de menú con submenú -->
+        <ng-container *ngIf="item.submenu">
+          <div class="nav__mobile-submenu">
+            <button mat-button (click)="toggleSubmenu('solutions')">
+              {{ item.title }}
+              <mat-icon>
+                {{
+                  isSolutionsSubmenuOpen ? "arrow_drop_up" : "arrow_drop_down"
+                }}
+              </mat-icon>
+            </button>
+
+            <div
+              class="nav__mobile-submenu-content"
+              [class.nav__mobile-submenu-content--open]="isSolutionsSubmenuOpen"
+            >
+              <a
+                mat-button
+                [routerLink]="subitem.path"
+                (click)="closeMenu()"
+                *ngFor="let subitem of item.submenu"
+              >
+                {{ subitem.title }}
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

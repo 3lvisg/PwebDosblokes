@@ -1,0 +1,15 @@
+.dialog-content {
+    padding: var(--spacing-md);
+  }
+
+  h2 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .payment-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: var(--radius-md);
+  }

@@ -1,0 +1,95 @@
+.dialog {
+  position: relative;
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(252, 102, 2);
+  max-height: 145%; /* Aumentar la altura un 30% */
+}
+
+.dialog__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.dialog__header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dialog__category {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.dialog__title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.dialog__subtitle {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.dialog__section {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.dialog__section--image-left {
+  grid-template-columns: 1fr 1fr;
+}
+
+.dialog__section--image-right {
+  grid-template-columns: 1fr 1fr;
+}
+
+.dialog__main-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.dialog__text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.dialog__details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dialog__spec h3 {
+  font-size: 1rem;
+  color: #444;
+  text-transform: uppercase;
+}
+
+.dialog__spec p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .dialog {
+    padding: var(--spacing-md);
+  }
+
+  .dialog__title {
+    font-size: 2rem;
+  }
+
+  .dialog__text {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,79 @@
+<div class="modal" [class.modal--open]="isOpen">
+  <button
+    class="modal-overlay"
+    [class.visible]="isOpen"
+    (click)="close()"
+    (keydown.escape)="close()"
+    aria-label="Cerrar modal"
+  ></button>
+
+  <div class="modal-content" [class.visible]="isOpen">
+    <button
+      mat-icon-button
+      class="modal__close"
+      (click)="close()"
+      aria-label="Cerrar"
+      appAnimate="fade-down"
+      [duration]="800"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="modal__content">
+      <h2 class="modal__title" appAnimate="fade-up" [duration]="1200">
+        {{ product?.title }}
+      </h2>
+
+      <!-- Primera sección -->
+      <div class="modal__section" appAnimate="fade-up" [duration]="1200">
+        <div class="modal__image-container">
+          <img
+            [src]="product?.image"
+            [alt]="product?.title"
+            class="modal__image"
+            appAnimate="reveal"
+            [delay]="200"
+          />
+        </div>
+
+        <div class="modal__info">
+          <div class="modal__description">
+            <h3>DESCRIPCIÓN</h3>
+            <p>{{ product?.description }}</p>
+          </div>
+
+          <div class="modal__subtitle" *ngIf="product?.subtitle">
+            <h3>MATERIALES</h3>
+            <p>{{ product?.materiales }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda sección -->
+      <div
+        class="modal__section modal__section--reverse"
+        *ngIf="product?.caracteristicas"
+        appAnimate="fade-up"
+        [duration]="1200"
+        [delay]="300"
+      >
+        <div class="modal__info">
+          <div class="modal__description">
+            <h3>CAEARTERISTICAS</h3>
+            <p>{{ product?.caracteristicas }}</p>
+          </div>
+        </div>
+
+        <div class="modal__image-container">
+          <img
+            [src]="product?.image2"
+            [alt]="product?.title"
+            class="modal__image"
+            appAnimate="reveal"
+            [delay]="500"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

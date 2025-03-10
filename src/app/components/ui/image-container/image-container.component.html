@@ -1,0 +1,16 @@
+<div
+  class="image-container"
+  [class.image-container--rounded]="rounded"
+  [style.width]="width ? width + 'px' : '100%'"
+  [style.height]="height ? height + 'px' : 'auto'"
+  [style.aspect-ratio]="aspectRatio"
+>
+  <img
+    [src]="src"
+    [alt]="alt"
+    [appImageSize]="type"
+    [objectFit]="objectFit"
+    loading="lazy"
+    class="image-container__img"
+  />
+</div>

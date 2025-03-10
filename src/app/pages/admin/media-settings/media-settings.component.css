@@ -1,0 +1,24 @@
+.media-settings {
+  padding: var(--spacing-xl) 0;
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.media-settings__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.media-settings__controls {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.media-settings__tab-content {
+  padding: var(--spacing-md) 0;
+}
+
+mat-card {
+  margin-bottom: var(--spacing-lg);
+}

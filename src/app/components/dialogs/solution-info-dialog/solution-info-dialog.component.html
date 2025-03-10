@@ -1,0 +1,19 @@
+<div class="dialog">
+  <div class="dialog__content">
+    <div class="dialog__header">
+      <h2 class="dialog__title">{{ data.title }}</h2>
+      <span class="dialog__category">{{ data.category }}</span>
+    </div>
+
+    <!-- Primera sección con imagen a la izquierda y descripción a la derecha -->
+    <div class="dialog__section dialog__section--image-left">
+      <img [src]="data.image" [alt]="data.title" class="dialog__main-image" />
+      <div class="dialog__text">
+        <p class="dialog__description">{{ data.description }}</p>
+      </div>
+    </div>
+  </div>
+  <button mat-icon-button class="dialog__close" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,9 @@
+<article class="card" [class.card--clickable]="link" [routerLink]="link">
+  <div class="card__image-container">
+    <img [src]="image" [alt]="title" class="card__image" />
+  </div>
+  <div class="card__content">
+    <h3 class="card__title">{{ title }}</h3>
+    <p class="card__description">{{ description }}</p>
+  </div>
+</article>
